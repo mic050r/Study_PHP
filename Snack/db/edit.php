@@ -39,6 +39,7 @@ if (isset($_GET["id"])) {
 <html>
 <head>
     <title>Snack 수정</title>
+    <link rel="stylesheet" type="text/css" href="../css/edit.css" />
 </head>
 <body>
     <h1>Snack 수정</h1>
