@@ -5,11 +5,17 @@
 </head>
 <body>
     <h1> <a href="index.php">Web</a> </h1>
-    <ol>
+    <?php 
+        data 디렉토리에 있는 파일의 목록을 가져오시오. PHP님
+        파일의 목록 하나 하나를 
+        li와 a 태그를 이용해서 글 목록을 만드세요.
+    ?>
+    <!-- <ol>
         <li><a href = "index.php?id=HTML">HTML</a></li>
         <li><a href = "index.php?id=CSS">CSS</a></li>
         <li><a href = "index.php?id=JavaScript">JavaScript</a></li>
-    </ol>
+        <li><a href = "index.php?id=PHP">PHP</a></li>
+    </ol> -->
     <h2>
         <?php
         //제목바꾸기
