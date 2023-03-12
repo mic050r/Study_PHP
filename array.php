@@ -13,6 +13,7 @@
   echo $coworkers[1].'<br>';
   echo $coworkers[2].'<br>';
   var_dump(count($coworkers));
+  //배열에 값추가
   array_push($coworkers, 'graphittie');
   var_dump($coworkers);
   ?>
