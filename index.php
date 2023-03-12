@@ -5,11 +5,22 @@
 </head>
 <body>
     <h1> <a href="index.php">Web</a> </h1>
-    <?php 
-        data 디렉토리에 있는 파일의 목록을 가져오시오. PHP님
-        파일의 목록 하나 하나를 
-        li와 a 태그를 이용해서 글 목록을 만드세요.
-    ?>
+    <ol>
+        <?php 
+            $list = scandir('./data');
+
+            $i = 0;
+            while($i < count($list)){
+                if($list[$i] != '.' && $list[$i] != '..'){
+                    echo " <li><a href = \"index.php?id=$list[$i]\"> $list[$i]</a></li>\n";
+                   
+                }
+                 $i = $i + 1;
+            }
+            
+            
+        ?>
+    </ol>
     <!-- <ol>
         <li><a href = "index.php?id=HTML">HTML</a></li>
         <li><a href = "index.php?id=CSS">CSS</a></li>
