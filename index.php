@@ -4,7 +4,7 @@
     <title></title>
 </head>
 <body>
-    <h1>Web</h1>
+    <h1> <a href="index.php">Web</a> </h1>
     <ol>
         <li><a href = "index.php?id=HTML">HTML</a></li>
         <li><a href = "index.php?id=CSS">CSS</a></li>
@@ -13,12 +13,22 @@
     <h2>
         <?php
         //제목바꾸기
-        echo $_GET['id'];
+        if(isset($_GET['id'])){
+            echo $_GET['id'];
+        }else{ //id값이 존재하지 않는다면
+            echo "Welcome";
+        }
+        
         ?>
     </h2>
     <?php
-    //echo data/id 값에 해당하는 파일의 내용;
+    if(isset($_GET['id'])){
+        //echo data/id 값에 해당하는 파일의 내용;
     echo file_get_contents("data/".$_GET['id']);
+    }else{
+        echo "Hello, PHP";
+    }
+    
     ?>
 </body>
 </html>
