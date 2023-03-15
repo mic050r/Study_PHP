@@ -44,20 +44,11 @@ function print_list(){
         print_list();
         ?>
     </ol>
-    <a href="create.php">Create</a>
-    <!-- <ol>
-        <li><a href = "index.php?id=HTML">HTML</a></li>
-        <li><a href = "index.php?id=CSS">CSS</a></li>
-        <li><a href = "index.php?id=JavaScript">JavaScript</a></li>
-        <li><a href = "index.php?id=PHP">PHP</a></li>
-    </ol> -->
-    <h2>
-        <?php
-        print_title();
-        ?>
-    </h2>
-    <?php 
-    print_description();
-    ?>
+    <a href="create.php"Create></a>
+    <form action="create_process.php" method="POST">
+        <p><input type="text" name="title" placeholder="Tilte"></p>
+        <p><textarea name="description" placeholder="Description"></textarea></p>
+        <p><input type="submit"></p>
+    </form>
 </body>
 </html>
