@@ -1,49 +1,7 @@
-<?php
-// 제목바꾸기
-function print_title(){
-    if(isset($_GET['id'])){
-        echo $_GET['id'];
-    }else{ //id값이 존재하지 않는다면
-        echo "Welcome";
-    }
-}
-function print_description(){
-    if(isset($_GET['id'])){
-        //echo data/id 값에 해당하는 파일의 내용;
-    echo file_get_contents("data/".$_GET['id']);
-    }else{
-        echo "Hello, PHP";
-    }
-    
-}
-function print_list(){
-    $list = scandir('./data');
-    $i = 0;
-    while($i < count($list)){
-        if($list[$i] != '.' && $list[$i] != '..'){
-            echo " <li><a href = \"index.php?id=$list[$i]\"> $list[$i]</a></li>\n";
-        }
-         $i = $i + 1;
-    }
-
-}
+<?php 
+require_once('lib/print.php');
+require_once('view/top.php');
 ?>
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <title>
-        <?php
-        print_title();
-        ?>
-    </title>
-</head>
-<body>
-    <h1> <a href="index.php">Web</a> </h1>
-    <ol>
-        <?php 
-        print_list();
-        ?>
-    </ol>
     <a href="create.php">Create</a>
     <?php if(isset($_GET['id'])){?>
         <!-- id값이 있어야지만 실행됨 
@@ -67,5 +25,6 @@ function print_list(){
         <p><textarea name="description" placeholder="Description"><?php print_description();?></textarea></p>
         <p><input type="submit"></p>
     </form>
-</body>
-</html>
+<?php 
+require('view/bottom.php');
+?>
