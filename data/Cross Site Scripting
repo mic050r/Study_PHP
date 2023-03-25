@@ -1,0 +1,4 @@
+XSS
+<script>
+alert('babo');
+</script>
