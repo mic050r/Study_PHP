@@ -1,8 +1,8 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "0123456789**", "opentutorials");
 
-mysqli_query($conn, "
-    INSERT INTO topic (
+$sql = "
+    INERT INTO topic (
         title,
         description,
         created
@@ -10,5 +10,12 @@ mysqli_query($conn, "
         'MySQL',
         'MySQL is ....',
         NOW()
-    )");
+    )";
+
+$result = mysqli_query($conn, $sql);
+
+if($result == false) {
+  echo mysqli_error($conn);
+}
+
 ?>
