@@ -2,7 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
     // 데이터베이스 연결 설정
   include('./connect.php');
-
+    mysqli_set_charset($conn, "utf8");
     $id = $_GET["id"];
 
     // 데이터베이스에서 선택한 항목 삭제

@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Snack 표</title>
+    <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="./css/snack.css" />
   </head>
   <body>
@@ -25,7 +26,15 @@
         <button id="popup-close">닫기</button>
         <button id="edit-button">수정</button>
         <button id="delete-button">삭제</button>
+
+        <!-- 장바구니 버튼 -->
         <button id="cart-button" data-id="">장바구니</button>
+
+        <!-- 장바구니 추가용 form -->
+        <form id="cart-form" method="POST" action="./db/cart.php">
+          <input type="hidden" id="cartImageId" name="imageId" />
+          <input type="hidden" id="cartQuantity" name="quantity" />
+        </form>
       </div>
     </div>
     <script>
@@ -76,7 +85,16 @@
           if (selectedImageId) {
             const quantity = prompt("장바구니에 추가할 개수를 입력하세요:");
             if (quantity !== null && quantity !== "") {
-              // 선택한 이미지의 ID와 개수를 사용하여 장바구니에 추가하는 동작 수행
+              // Form 데이터 설정
+              const cartForm = document.getElementById("cart-form");
+              const cartImageId = document.getElementById("cartImageId");
+              const cartQuantity = document.getElementById("cartQuantity");
+
+              cartImageId.value = selectedImageId;
+              cartQuantity.value = quantity;
+
+              // Form을 서버로 제출
+              cartForm.submit();
             }
           }
         });

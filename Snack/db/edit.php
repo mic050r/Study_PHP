@@ -1,7 +1,7 @@
 <?php
 // 데이터베이스 연결 설정
 include('./connect.php');
-
+mysqli_set_charset($conn, "utf8");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // POST 요청으로부터 폼 데이터 가져오기
     $id = $_POST["id"];

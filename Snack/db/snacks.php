@@ -1,6 +1,7 @@
 <?php
 // 데이터베이스 연결
 include('./db/connect.php');
+mysqli_set_charset($conn, "utf8");
 
 // 데이터 조회
 $result = $conn->query("SELECT * FROM snack ORDER BY id ASC");

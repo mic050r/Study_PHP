@@ -1,5 +1,6 @@
 <?php
 include('./connect.php');
+mysqli_set_charset($conn, "utf8");
 // POST로 받은 데이터 처리
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
