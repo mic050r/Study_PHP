@@ -1,6 +1,5 @@
 <?php
 include('./connect.php');
-mysqli_set_charset($conn, "utf8");
 
 // 폼에서 제출된 사용자 이름 가져오기
 $username = $_POST['username'];
