@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Snack 표</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Snack 목록</h1>
-    <link rel="stylesheet" type="text/css" href="./css/snack.css">
+    <link rel="stylesheet" type="text/css" href="./css/snack.css" />
     <table border="1">
-        <tr>
-            <th>순번</th>
-            <th>이름</th>
-            <th>가격</th>
-            <th>사진</th>
-            <th>비고</th>
-        </tr>
-        <?php
+      <tr>
+        <th>순번</th>
+        <th>이름</th>
+        <th>가격</th>
+        <th>사진</th>
+        <th>비고</th>
+      </tr>
+      <?php
             include('./db/snacks.php');
         ?>
     </table>
-    
-</body>
+    <!-- 팝업 컨테이너 -->
+    <div class="popup-container">
+      <div class="popup-content">
+        <img id="popup-image" src="" alt="크게보기" />
+        <button id="popup-close">닫기</button>
+        <button id="edit-button">수정</button>
+        <button id="delete-button">삭제</button>
+        <button id="cart-button">장바구니</button>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const popupContainer = document.querySelector(".popup-container");
+        const popupImage = document.getElementById("popup-image");
+
+        // 이미지 클릭 이벤트
+        document.querySelectorAll(".popup-trigger").forEach((img) => {
+          img.addEventListener("click", (e) => {
+            const src = e.target.getAttribute("data-image");
+            popupImage.src = src;
+            popupContainer.style.display = "block";
+          });
+        });
+
+        // 팝업 닫기 버튼
+        document.getElementById("popup-close").addEventListener("click", () => {
+          popupContainer.style.display = "none";
+        });
+      });
+    </script>
+  </body>
 </html>
