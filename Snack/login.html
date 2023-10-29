@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인하기</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="./css/login.css">
+    <h1>로그인하기</h1>
+        <form method="POST" action="./db/login.php">
+            <label for="username">사용자 이름:</label>
+            <input type="text" name="username" id="username" required><br>
+
+            <label for="password">비밀번호:</label>
+            <input type="password" name="password" id="password" required><br>
+
+            <input type="submit" value="로그인">
+        </form>
+</body>
+</html>
