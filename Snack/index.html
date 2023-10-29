@@ -2,10 +2,10 @@
 <html>
   <head>
     <title>Snack 표</title>
+    <link rel="stylesheet" type="text/css" href="./css/snack.css" />
   </head>
   <body>
     <h1>Snack 목록</h1>
-    <link rel="stylesheet" type="text/css" href="./css/snack.css" />
     <table border="1">
       <tr>
         <th>순번</th>
@@ -15,8 +15,8 @@
         <th>비고</th>
       </tr>
       <?php
-            include('./db/snacks.php');
-        ?>
+        include('./db/snacks.php');
+      ?>
     </table>
     <!-- 팝업 컨테이너 -->
     <div class="popup-container">
@@ -25,18 +25,24 @@
         <button id="popup-close">닫기</button>
         <button id="edit-button">수정</button>
         <button id="delete-button">삭제</button>
-        <button id="cart-button">장바구니</button>
+        <button id="cart-button" data-id="">장바구니</button>
       </div>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const popupContainer = document.querySelector(".popup-container");
         const popupImage = document.getElementById("popup-image");
+        const editButton = document.getElementById("edit-button");
+        const deleteButton = document.getElementById("delete-button");
+        const cartButton = document.getElementById("cart-button");
+
+        let selectedImageId = null; // 선택한 이미지의 ID를 저장할 변수
 
         // 이미지 클릭 이벤트
         document.querySelectorAll(".popup-trigger").forEach((img) => {
           img.addEventListener("click", (e) => {
             const src = e.target.getAttribute("data-image");
+            selectedImageId = e.target.getAttribute("data-id"); // 이미지 클릭 시 ID 추출
             popupImage.src = src;
             popupContainer.style.display = "block";
           });
@@ -45,6 +51,35 @@
         // 팝업 닫기 버튼
         document.getElementById("popup-close").addEventListener("click", () => {
           popupContainer.style.display = "none";
+        });
+
+        // "수정" 버튼 클릭 시 동작
+        editButton.addEventListener("click", () => {
+          // 선택한 이미지의 ID를 사용하여 수정 페이지로 이동
+          console.log(selectedImageId);
+          if (selectedImageId) {
+            window.location.href = `./db/edit.php?id=${selectedImageId}`;
+          }
+        });
+
+        // "삭제" 버튼 클릭 시 동작
+        deleteButton.addEventListener("click", () => {
+          // 선택한 이미지의 ID를 사용하여 삭제 페이지로 이동
+          if (selectedImageId) {
+            window.location.href = `./db/delete.php?id=${selectedImageId}`;
+          }
+        });
+
+        // "장바구니" 버튼 클릭 시 동작
+        cartButton.addEventListener("click", () => {
+          // 선택한 이미지의 ID를 사용하여 장바구니에 추가하는 동작 수행
+          if (selectedImageId) {
+            const quantity = prompt("장바구니에 추가할 개수를 입력하세요:");
+            if (quantity !== null && quantity !== "") {
+              // 선택한 이미지의 ID와 개수를 사용하여 장바구니에 추가하는 동작 수행
+              .
+            }
+          }
         });
       });
     </script>
