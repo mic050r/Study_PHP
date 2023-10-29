@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Snack 표</title>
+</head>
+<body>
+    <h1>Snack 목록</h1>
+    <link rel="stylesheet" type="text/css" href="./css/snack.css">
+    <table border="1">
+        <tr>
+            <th>순번</th>
+            <th>이름</th>
+            <th>가격</th>
+            <th>사진</th>
+            <th>비고</th>
+        </tr>
+        <?php
+        // 데이터베이스 연결
+        $mysqli = new mysqli("localhost", "root", "1234", "test", "3308");
+        mysqli_set_charset($mysqli, "utf8");
+
+        // 연결 검사
+        if ($mysqli->connect_error) {
+            die("데이터베이스 연결 실패: " . $mysqli->connect_error);
+        }
+
+        // 데이터 조회
+        $result = $mysqli->query("SELECT * FROM snack ORDER BY id ASC");
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row["id"] . "</td>";
+                echo "<td>" . $row["name"] . "</td>";
+                echo "<td>" . $row["price"] . "</td>";
+                echo '<td><img src="./img/' . $row["img"] . '" alt="' . $row["name"] . '" width="100"></td>';
+                echo "<td>" . $row["description"] . "</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "데이터가 없습니다.";
+        }
+
+        // 데이터베이스 연결 닫기
+        $mysqli->close();
+        ?>
+    </table>
+</body>
+</html>
